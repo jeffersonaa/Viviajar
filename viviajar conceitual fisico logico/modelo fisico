@@ -1,0 +1,34 @@
+/* Lógico_1: */
+
+CREATE TABLE clientes (
+    nome VARCHAR,
+    email VARCHAR,
+    endereco VARCHAR,
+    cpf VARCHAR,
+    telefone VARCHAR,
+    id INTEGER PRIMARY KEY,
+    fk_passagens_id_passagem INTEGER
+);
+
+CREATE TABLE destinos (
+    cidade VARCHAR,
+    estado VARCHAR,
+    id INTEGER PRIMARY KEY,
+    fk_passagens_id_passagem INTEGER
+);
+
+CREATE TABLE passagens (
+    id_destinos INTEGER,
+    id_passagem INTEGER PRIMARY KEY,
+    id_clientes INTEGER
+);
+ 
+ALTER TABLE clientes ADD CONSTRAINT FK_clientes_2
+    FOREIGN KEY (fk_passagens_id_passagem)
+    REFERENCES passagens (id_passagem)
+    ON DELETE RESTRICT;
+ 
+ALTER TABLE destinos ADD CONSTRAINT FK_destinos_2
+    FOREIGN KEY (fk_passagens_id_passagem)
+    REFERENCES passagens (id_passagem)
+    ON DELETE RESTRICT;
