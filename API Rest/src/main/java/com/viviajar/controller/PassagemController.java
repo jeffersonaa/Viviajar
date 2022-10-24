@@ -21,12 +21,6 @@ public class PassagemController {
 	@Autowired
 	private PassagensRepository passagensRepository;
 	
-	@Autowired
-	private DestinoRepository destinoRepository;
-	
-	@Autowired
-	private ClienteRepository clienteRepository;
-	
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public Optional<Passagem> passagem(@PathVariable Long id) {
