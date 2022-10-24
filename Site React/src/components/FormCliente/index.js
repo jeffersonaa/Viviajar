@@ -1,15 +1,16 @@
 import React, {useState} from 'react';
 
-function FormDestino({ destino, submit, edit }) {
+function FormCliente({ submit, cliente, edit }) {
 
     const initialValues = {
         nome: "",
-        descricao: "",
-        cidade: "",
-        estado: "",
+        email: "",
+        endereco: "",
+        cpf: "",
+        telefone: "",
     }
 
-    const [form, setForm] = useState(destino || initialValues );
+    const [form, setForm] = useState(cliente || initialValues );
 
     const handleGetData = (e, name) => {
         setForm({...form, [name]: e.target.value})
@@ -21,16 +22,20 @@ function FormDestino({ destino, submit, edit }) {
             label: "Nome"
         },
         {
-            name: "descricao",
-            label: "Descrição"
+            name: "email",
+            label: "E-mail"
         },
         {
-            name: "estado",
-            label: "Estado"
+            name: "endereco",
+            label: "Endereço"
         },
         {
-            name: "cidade",
-            label: "Cidade"
+            name: "cpf",
+            label: "CPF"
+        },
+        {
+            name: "telefone",
+            label: "Telefone"
         },
     ];
 
@@ -40,8 +45,7 @@ function FormDestino({ destino, submit, edit }) {
         if(!edit) setForm(initialValues)
     }
 
-  return <form className='mb-5' onSubmit={e => handleSubmit(e)}>
-
+  return <form className='mb-5' onSubmit={e => handleSubmit(e) }>
     { configForm.map(({ name, label }) => (
         <div key={name} className="form-group">
             <label htmlFor={name}>{label}</label>
@@ -53,9 +57,9 @@ function FormDestino({ destino, submit, edit }) {
             onChange={e => handleGetData(e, name)}  />
         </div>
     )) }
-  
+
     <button type="submit" className="btn btn-primary">Salvar</button>
   </form>;
 }
 
-export default FormDestino;
+export default FormCliente;

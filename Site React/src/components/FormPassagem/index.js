@@ -1,15 +1,13 @@
 import React, {useState} from 'react';
 
-function FormDestino({ destino, submit, edit }) {
+function FormDestino({ clientes, destinos, submit, edit }) {
 
     const initialValues = {
-        nome: "",
-        descricao: "",
-        cidade: "",
-        estado: "",
+        id_destino: "",
+        id_cliente: "",
     }
 
-    const [form, setForm] = useState(destino || initialValues );
+    const [form, setForm] = useState(initialValues );
 
     const handleGetData = (e, name) => {
         setForm({...form, [name]: e.target.value})
@@ -17,20 +15,14 @@ function FormDestino({ destino, submit, edit }) {
 
     const configForm = [
         {
-            name: "nome",
-            label: "Nome"
+            name: "id_cliente",
+            label: "Cliente",
+            data: clientes
         },
         {
-            name: "descricao",
-            label: "Descrição"
-        },
-        {
-            name: "estado",
-            label: "Estado"
-        },
-        {
-            name: "cidade",
-            label: "Cidade"
+            name: "id_destino",
+            label: "Destino",
+            data: destinos
         },
     ];
 
@@ -42,15 +34,18 @@ function FormDestino({ destino, submit, edit }) {
 
   return <form className='mb-5' onSubmit={e => handleSubmit(e)}>
 
-    { configForm.map(({ name, label }) => (
+    { configForm.map(({ name, label, data }) => (
         <div key={name} className="form-group">
             <label htmlFor={name}>{label}</label>
-            <input 
+            <select 
             type="text" 
             className="form-control" 
             id={name} 
             value={form[name]}
-            onChange={e => handleGetData(e, name)}  />
+            onChange={e => handleGetData(e, name)}>
+                <option value="">Selecione</option>
+                {data.map(({ nome, id }) => <option key={id} value={id}>{nome}</option>)}
+            </select>
         </div>
     )) }
   

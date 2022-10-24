@@ -10,9 +10,20 @@ import Home from './pages/Home';
 import Promocoes from './pages/Promocoes';
 import Destinos from './pages/Destinos';
 import Contato from './pages/Contato';
-import Admin from './pages/Admin';
-import Edit from './pages/Edit';
-import Add from './pages/Add';
+// Destinos
+import DestinosList from "./pages/DestinosAdmin/List"
+import DestinosEdit from './pages/DestinosAdmin/Edit';
+import DestinosAdd from './pages/DestinosAdmin/Add';
+
+// Clientes
+import ClientesList from "./pages/ClientesAdmin/List"
+import ClientesEdit from './pages/ClientesAdmin/Edit';
+import ClientesAdd from './pages/ClientesAdmin/Add';
+
+// Passagens
+import PassagensList from "./pages/PassagensAdmin/List"
+import PassagensEdit from './pages/PassagensAdmin/Edit';
+import PassagensAdd from './pages/PassagensAdmin/Add';
 
 function App() {
 
@@ -20,6 +31,10 @@ function App() {
     {
       path: "/",
       element: <Home />,
+    },
+    {
+      path: "/admin",
+      element: <ClientesList />,
     },
     {
       path: "/promocoes",
@@ -34,16 +49,40 @@ function App() {
       element: <Contato />,
     },
     {
-      path: "/admin",
-      element: <Admin />,
+      path: "/admin/destinos",
+      element: <DestinosList />,
     },
     {
-      path: "/admin/edit/:id",
-      element: <Edit />,
+      path: "/admin/destinos/edit/:id",
+      element: <DestinosEdit />,
     },
     {
-      path: "/admin/add",
-      element: <Add />,
+      path: "/admin/destinos/add",
+      element: <DestinosAdd />,
+    },
+    {
+      path: "/admin/clientes",
+      element: <ClientesList />,
+    },
+    {
+      path: "/admin/clientes/edit/:id",
+      element: <ClientesEdit />,
+    },
+    {
+      path: "/admin/clientes/add",
+      element: <ClientesAdd />,
+    },
+    {
+      path: "/admin/passagens",
+      element: <PassagensList />,
+    },
+    {
+      path: "/admin/passagens/edit/:id",
+      element: <PassagensEdit />,
+    },
+    {
+      path: "/admin/passagens/add",
+      element: <PassagensAdd />,
     },
   ]);
 
